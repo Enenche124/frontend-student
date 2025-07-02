@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Dashboard</title>
+  <link rel="stylesheet" href="../styles/main.css" />
+</head>
+<body>
+  <header>
+    <h1>Admin Dashboard</h1>
+    <div style="display: flex; align-items: center; gap: 10px;">
+      <p id="admin-email" style="margin: 0;"></p>
+      <span id="admin-role" class="role-badge">ADMIN</span>
+    </div>
+    <button id="logout-btn">Logout</button>
+  </header>
+
+  <main>
+    <!-- SECTION: Create Course -->
+    <section>
+      <h2>Create Course</h2>
+      <form id="create-course-form">
+        <input type="text" id="courseCode" placeholder="Course Code" required />
+        <input type="text" id="title" placeholder="Course Title" required />
+        <textarea id="description" placeholder="Description"></textarea>
+        <button type="submit">Create</button>
+      </form>
+    </section>
+
+    <!-- SECTION: Assign Course -->
+    <section>
+      <h2>Assign Course to Lecturer</h2>
+      <form id="assign-course-form">
+        <input type="text" id="assignCourseCode" placeholder="Course Code" required />
+        <input type="email" id="lecturerEmail" placeholder="Lecturer Email" required />
+        <button type="submit">Assign</button>
+      </form>
+    </section>
+
+    <!-- SECTION: View All Courses -->
+    <section>
+      <h2>All Courses</h2>
+      <ul id="coursesList"></ul>
+    </section>
+
+    <section>
+      <h2>All Lecturers</h2>
+      <ul id="lecturersList"></ul>
+    </section>
+
+    <section>
+      <h2>Delete Course</h2>
+      <form id="delete-course-form">
+        <input type="text" id="deleteCourseCode" placeholder="Course Code" required />
+        <button type="submit">Delete Course</button>
+      </form>
+    </section>
+
+    <section>
+      <h2>Delete Lecturer</h2>
+      <form id="delete-lecturer-form">
+        <input type="email" id="deleteLecturerEmail" placeholder="Lecturer Email" required />
+        <button type="submit">Delete Lecturer</button>
+      </form>
+    </section>
+
+
+
+    <!-- SECTION: Create Admin or Lecturer -->
+<section>
+  <h2>Create Admin or Lecturer</h2>
+  <form id="create-user-form">
+    <input type="text" id="newUserName" placeholder="Name" required />
+    <input type="email" id="newUserEmail" placeholder="Email" required />
+    <input type="password" id="newUserPassword" placeholder="Password" required />
+    <select id="newUserRole" required>
+      <option value="">Select Role</option>
+      <option value="LECTURER">Lecturer</option>
+      <option value="ADMIN">Admin</option>
+    </select>
+    <button type="submit">Create</button>
+  </form>
+</section>
+
+  </main>
+
+  <script src="../scripts/admin-dashboard.js"></script>
+</body>
+</html>

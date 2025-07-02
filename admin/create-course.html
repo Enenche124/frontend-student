@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Create Course</title>
+  <link rel="stylesheet" href="../styles/main.css" />
+</head>
+<body>
+  <h2>Create New Course</h2>
+
+  <form id="createCourseForm">
+    <label>Course Code:</label>
+    <input type="text" id="courseCode" required><br>
+
+    <label>Title:</label>
+    <input type="text" id="title" required><br>
+
+    <label>Description:</label>
+    <textarea id="description" rows="4"></textarea><br>
+
+    <button type="submit">Create Course</button>
+  </form>
+
+  <p id="message"></p>
+
+  <script src="../scripts/create-course.js"></script>
+</body>
+</html>

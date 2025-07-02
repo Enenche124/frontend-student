@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>User Dashboard</title>
+  <link rel="stylesheet" href="/main.css" />
+</head>
+<body>
+  <header>
+    <h1>Welcome, <span id="user-role"></span></h1>
+    <button onclick="logout()">Logout</button>
+  </header>
+
+  <nav>
+    <ul id="nav-links">
+      <!-- Links will be dynamically loaded based on role -->
+    </ul>
+  </nav>
+
+  <main id="dashboard-content">
+    <!-- Content loaded here -->
+    <p>Loading dashboard...</p>
+  </main>
+
+  <script src="../scripts/dashboard.js"></script>
+</body>
+</html>

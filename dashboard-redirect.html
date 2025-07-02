@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Redirecting...</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin-top: 5rem;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+  <p>Redirecting to your dashboard...</p>
+
+  <script>
+    const token = localStorage.getItem("token");
+
+    if (!token) {
+      window.location.href = "/login.html";
+    } else {
+      try {
+        const payload = JSON.parse(atob(token.split('.')[1]));
+        const role = payload.role.replace("ROLE_", "").toUpperCase();
+
+    switch (role) {
+  case "ADMIN":
+    window.location.href = "./dasboard/admin-dashboard.html";
+    break;
+  case "LECTURER":
+    window.location.href = "./dashboard/lecturer-dashboard.html";
+    break;
+  case "STUDENT":
+    window.location.href = "./dasboard/student-dashboard.html";
+    break;
+  default:
+    alert("Unknown role. Redirecting to login.");
+    window.location.href = "login.html";
+}
+
+      } catch (e) {
+        alert("Invalid token. Please log in again.");
+        window.location.href = "./login.html";
+      }
+    }
+  </script>
+
+ 
+  <script src="scripts/dashboard.js"></script>
+</body>
+</html>
