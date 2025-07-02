@@ -1,21 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Student Dashboard</title>
+  <link rel="stylesheet" href="../styles/student-dashboard.css" />
 </head>
 <body>
+  <header>
+    <h1>Welcome, Student</h1>
     <div>
-        <h1>Student Dashboard</h1>
-        <p>Welcome to the lecturer dashboard!</p>
-        <ul>
-            <li><a href="view-courses.html">View Courses</a></li>
-            <li><a href="manage-courses.html">Manage Courses</a></li>
-            <li><a href="view-students.html">View Students</a></li>
-            <li><a href="logout.html">Logout</a></li>
-        </ul>
-        <p id="lecturer-email"></p>
+      <p id="student-email"></p>
+      <span class="role-badge">STUDENT</span>
     </div>
+    <button id="logout-btn">Logout</button>
+  </header>
+
+  <main>
+    <section>
+      <h2>Available Courses</h2>
+      <ul id="availableCoursesList"></ul>
+    </section>
+
+    <section>
+      <h2>My Enrolled Courses</h2>
+      <ul id="enrolledCoursesList"></ul>
+    </section>
+
+    <section>
+      <h2>My Grades</h2>
+      <ul id="gradesList"></ul>
+    </section>
+
+    <section>
+      <h2>Enroll in Course</h2>
+      <form id="enroll-form">
+        <input type="text" id="enrollCourseCode" placeholder="Course Code" required />
+        <button type="submit">Enroll</button>
+      </form>
+    </section>
+  </main>
+
+  <script src="../scripts/student-dashboard.js"></script>
 </body>
 </html>

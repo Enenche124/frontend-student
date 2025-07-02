@@ -1,22 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lecturer Dashboard</title>
+  <link rel="stylesheet" href="../styles/lecturer-dashboard.css" />
 </head>
 <body>
-    
-    <div>
-        <h1>Lecturer Dashboard</h1>
-        <p>Welcome to the lecturer dashboard!</p>
-        <ul>
-            <li><a href="view-courses.html">View Courses</a></li>
-            <li><a href="manage-courses.html">Manage Courses</a></li>
-            <li><a href="view-students.html">View Students</a></li>
-            <li><a href="logout.html">Logout</a></li>
-        </ul>
-        <p id="lecturer-email"></p>
+  <header class="dashboard-header">
+    <h1>Lecturer Dashboard</h1>
+    <div class="lecturer-info">
+      <span id="lecturer-email">lecturer@example.com</span>
+      <span class="badge">LECTURER</span>
+      <button id="logout-btn">Logout</button>
     </div>
+  </header>
+
+  <main class="dashboard-content">
+    <!-- Assigned Courses -->
+    <section class="dashboard-section">
+      <h2>Your Assigned Courses</h2>
+      <ul id="lecturerCoursesList" class="item-list"></ul>
+    </section>
+
+    <!-- Enrolled Students -->
+    <section class="dashboard-section">
+      <h2>Students in Your Courses</h2>
+      <ul id="studentsList" class="item-list"></ul>
+    </section>
+
+    <!-- Assign Grade -->
+    <section class="dashboard-section">
+      <h2>Assign Grade</h2>
+      <form id="assign-grade-form" class="form-grid">
+        <input type="email" id="studentEmail" placeholder="Student Email" required />
+        <input type="text" id="courseCode" placeholder="Course Code" required />
+        <input type="number" id="score" placeholder="Score (0 - 100)" min="0" max="100" required />
+        <button type="submit">Assign Grade</button>
+      </form>
+    </section>
+  </main>
+
+  <script src="../scripts/lecturer-dashboard.js"></script>
 </body>
 </html>

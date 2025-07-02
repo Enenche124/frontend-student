@@ -1,4 +1,3 @@
-// admin-dashboard.js
 
 const token = localStorage.getItem("token");
 const role = localStorage.getItem("role");
@@ -8,13 +7,11 @@ const headers = {
   Authorization: `Bearer ${token}`,
 };
 
-// ACCESS CONTROL CHECK
 if (role !== "ADMIN") {
   alert("Access denied. Redirecting...");
   window.location.href = "../login.html";
 }
 
-// Display admin email
 const emailDisplay = document.getElementById("admin-email");
 if (emailDisplay) {
   emailDisplay.textContent = email || "Admin";
@@ -42,7 +39,6 @@ async function loadCourses() {
 
     courses.forEach((course) => {
       const li = document.createElement("li");
-      
       li.textContent = `${course.courseCode} ${course.courseTitle || "Untitled"} (${course.courseDescription || "No description"}), (${course.courseLecturerEmail || "No lecturer assigned"})`;
       list.appendChild(li);
     });
@@ -59,7 +55,7 @@ async function loadLecturers() {
   const lecturersList = document.getElementById("lecturersList");
   if (!lecturersList) return;
 
-  lecturersList.innerHTML = ""; // CLEAR old list
+  lecturersList.innerHTML = ""; // Clear previous list
 
   try {
     const response = await fetch("http://localhost:9090/api/admin/lecturers", {
@@ -67,6 +63,12 @@ async function loadLecturers() {
     });
 
     const lecturers = await response.json();
+    
+
+    if (!Array.isArray(lecturers)) {
+      throw new Error("Invalid lecturer list format");
+    }
+
     lecturers.forEach((email) => {
       const li = document.createElement("li");
       li.textContent = email;
@@ -76,7 +78,6 @@ async function loadLecturers() {
     console.error("Failed to load lecturers:", err);
   }
 }
-
 
 loadLecturers();
 
@@ -133,6 +134,7 @@ if (assignForm) {
       const data = await response.text();
       alert(data);
       assignForm.reset();
+      loadCourses(); // ✅ Refresh course list after assigning
     } catch (err) {
       alert("Failed to assign course.");
       console.error(err);
@@ -190,7 +192,6 @@ if (deleteLecturerForm) {
       );
 
       const data = await response.text();
-      console.log("Delete response:", data);
       alert(data);
       deleteLecturerForm.reset();
       loadLecturers();
@@ -201,8 +202,9 @@ if (deleteLecturerForm) {
   });
 }
 
-
-
+// ==========================
+// LOGOUT
+// ==========================
 const logoutBtn = document.getElementById("logout-btn");
 if (logoutBtn) {
   logoutBtn.addEventListener("click", () => {
@@ -212,8 +214,9 @@ if (logoutBtn) {
   });
 }
 
-
-
+// ==========================
+// CREATE USER (ADMIN/LECTURER)
+// ==========================
 const createUserForm = document.getElementById("create-user-form");
 if (createUserForm) {
   createUserForm.addEventListener("submit", async (e) => {
@@ -235,7 +238,8 @@ if (createUserForm) {
       alert(data);
 
       createUserForm.reset();
-      loadLecturers(); // refresh list if new lecturer was added
+      loadLecturers(); // refresh lecturer list
+      loadCourses();   // refresh courses in case they get assigned
     } catch (err) {
       alert("Failed to create user.");
       console.error(err);
