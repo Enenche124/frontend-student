@@ -24,6 +24,7 @@ body::before {
   z-index: 1;
   max-width: 500px;
   width: 90%;
+  height: 100vh;
   margin: 0 auto;
   background: rgba(255, 255, 255, 0.15);
   border-radius: 16px;

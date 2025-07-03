@@ -45,3 +45,4 @@ document.addEventListener("DOMContentLoaded", () => {
 
   navLinks.innerHTML = links;
 });
+
