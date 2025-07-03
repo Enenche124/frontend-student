@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Admin Dashboard</title>
   <link rel="stylesheet" href="../styles/main.css" />
+  <link rel="stylesheet" href="../styles/notify.css">
 </head>
 <body>
   <header>
@@ -18,7 +19,7 @@
   </header>
 
   <main>
-    <!-- SECTION: Create Course -->
+  
     <section>
       <h2>Create Course</h2>
       <form id="create-course-form">
@@ -29,7 +30,7 @@
       </form>
     </section>
 
-    <!-- SECTION: Assign Course -->
+  
     <section>
       <h2>Assign Course to Lecturer</h2>
       <form id="assign-course-form">
@@ -39,7 +40,7 @@
       </form>
     </section>
 
-    <!-- SECTION: View All Courses -->
+  
     <section>
       <h2>All Courses</h2>
       <ul id="coursesList"></ul>
@@ -68,7 +69,7 @@
 
 
 
-    <!-- SECTION: Create Admin or Lecturer -->
+    
 <section>
   <h2>Create Admin or Lecturer</h2>
   <form id="create-user-form">
@@ -84,6 +85,7 @@
   </form>
 </section>
 
+  <div id="notification" class="notification hidden"></div>
   </main>
 
   <script src="../scripts/admin-dashboard.js"></script>

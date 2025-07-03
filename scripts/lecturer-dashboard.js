@@ -1,29 +1,27 @@
-// lecturer-dashboard.js
 
 const token = localStorage.getItem("token");
 const role = localStorage.getItem("role");
 const email = localStorage.getItem("email");
+const userName = localStorage.getItem("userName");
+const nameDisplay = document.getElementById("welcome-name");
+
 
 const headers = {
   "Content-Type": "application/json",
   Authorization: `Bearer ${token}`,
 };
 
-// Redirect if not lecturer
+
 if (role !== "LECTURER") {
-  alert("Access denied. Redirecting...");
+  showMessage("Access denied. Redirecting...");
   window.location.href = "../login.html";
 }
 
-// Display lecturer email
-const lecturerEmailDisplay = document.getElementById("lecturer-email");
-if (lecturerEmailDisplay) {
-  lecturerEmailDisplay.textContent = email || "Lecturer";
+if(nameDisplay && userName) {
+  nameDisplay.textContent = `Welcome, ${userName}`;
 }
 
-// ==============================
-// Load Assigned Courses
-// ==============================
+
 async function loadLecturerCourses() {
   try {
     const response = await fetch("http://localhost:9090/api/v1/lecturer/courses", { headers });
@@ -49,9 +47,7 @@ async function loadLecturerCourses() {
 
 loadLecturerCourses();
 
-// ==============================
-// Load Enrolled Students
-// ==============================
+
 async function loadEnrolledStudents() {
   try {
     const response = await fetch("http://localhost:9090/api/v1/lecturer/students", { headers });
@@ -79,9 +75,8 @@ async function loadEnrolledStudents() {
 
 loadEnrolledStudents();
 
-// ==============================
-// Assign Grade
-// ==============================
+
+
 const assignGradeForm = document.getElementById("assign-grade-form");
 if (assignGradeForm) {
   assignGradeForm.addEventListener("submit", async (e) => {
@@ -99,23 +94,37 @@ if (assignGradeForm) {
       });
 
       const message = await response.text();
-      alert(message);
+      showMessage(message);
       assignGradeForm.reset();
     } catch (error) {
-      alert("Failed to assign grade.");
+      showMessage("Failed to assign grade.");
       console.error(error);
     }
   });
 }
 
-// ==============================
-// Logout
-// ==============================
+
+
+
 const logoutBtn = document.getElementById("logout-btn");
 if (logoutBtn) {
   logoutBtn.addEventListener("click", () => {
     localStorage.clear();
-    alert("Logged out successfully.");
+    showMessage("Logged out successfully.");
     window.location.href = "../login.html";
   });
+}
+
+
+
+function showMessage(message, type = "success") {
+  const notification = document.getElementById("notification");
+  if (!notification) return;
+
+  notification.textContent = message;
+  notification.className = `notification ${type}`;
+  
+  setTimeout(() => {
+    notification.classList.add("hidden");
+  }, 4000); 
 }

@@ -1,4 +1,3 @@
-// scripts/dashboard.js
 
 function logout() {
   localStorage.removeItem("token");

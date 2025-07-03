@@ -1,4 +1,3 @@
-/* lecturer-dashboard.css */
 
 * {
   box-sizing: border-box;
@@ -60,7 +59,7 @@ main.dashboard-content {
   gap: 2rem;
 }
 
-/* Sections */
+
 .dashboard-section {
   background-color: #fff;
   padding: 1.5rem;
@@ -73,7 +72,7 @@ main.dashboard-content {
   color: #1f3c88;
 }
 
-/* Lists */
+
 .item-list {
   list-style: none;
   padding-left: 0;
@@ -84,7 +83,7 @@ main.dashboard-content {
   border-bottom: 1px solid #ddd;
 }
 
-/* Forms */
+
 .form-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -111,7 +110,7 @@ button[type="submit"]:hover {
   background-color: #163278;
 }
 
-/* Responsive */
+
 @media (max-width: 600px) {
   header.dashboard-header,
   main.dashboard-content {
@@ -121,4 +120,44 @@ button[type="submit"]:hover {
   .form-grid {
     grid-template-columns: 1fr;
   }
+
+  .notification{
+    left: 20%;
+    width: 50%;
+    transform: translateX(-20%);
+    font-weight: 200;
+    font-size: 0.8rem;
+  }
 }
+
+
+.notification {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.2rem 0.4rem;
+  border-radius: 8px;
+  font-weight: 300;
+  z-index: 1000;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: opacity 0.4s ease;
+}
+
+.notification.success {
+  background-color: #d1f7d1;
+  color: #1a7f1a;
+  border: 1px solid #1a7f1a;
+}
+
+.notification.error {
+  background-color: #ffe0e0;
+  color: #b30000;
+  border: 1px solid #b30000;
+}
+
+.notification.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+

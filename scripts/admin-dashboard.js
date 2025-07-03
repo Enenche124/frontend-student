@@ -2,24 +2,23 @@
 const token = localStorage.getItem("token");
 const role = localStorage.getItem("role");
 const email = localStorage.getItem("email");
+const userName = localStorage.getItem("userName");
+const nameDisplay = document.getElementById("welcome-name");
 const headers = {
   "Content-Type": "application/json",
   Authorization: `Bearer ${token}`,
 };
 
 if (role !== "ADMIN") {
-  alert("Access denied. Redirecting...");
+  showMessage("Access denied. Redirecting...");
   window.location.href = "../login.html";
 }
 
-const emailDisplay = document.getElementById("admin-email");
-if (emailDisplay) {
-  emailDisplay.textContent = email || "Admin";
+if (nameDisplay && userName) {
+  nameDisplay.textContent = `Welcome, ${userName}`;
 }
 
-// ==========================
-// LOAD ALL COURSES
-// ==========================
+
 async function loadCourses() {
   try {
     const response = await fetch("http://localhost:9090/api/admin/courses", {
@@ -27,7 +26,7 @@ async function loadCourses() {
     });
 
     if (response.status === 401 || response.status === 403) {
-      alert("Session expired. Please login again.");
+      showMessage("Session expired. Please login again.");
       localStorage.clear();
       window.location.href = "../login.html";
     }
@@ -48,14 +47,12 @@ async function loadCourses() {
 }
 loadCourses();
 
-// ==========================
-// LOAD ALL LECTURERS
-// ==========================
+
 async function loadLecturers() {
   const lecturersList = document.getElementById("lecturersList");
   if (!lecturersList) return;
 
-  lecturersList.innerHTML = ""; // Clear previous list
+  lecturersList.innerHTML = ""; 
 
   try {
     const response = await fetch("http://localhost:9090/api/admin/lecturers", {
@@ -81,9 +78,8 @@ async function loadLecturers() {
 
 loadLecturers();
 
-// ==========================
-// CREATE COURSE
-// ==========================
+
+
 const createForm = document.getElementById("create-course-form");
 if (createForm) {
   createForm.addEventListener("submit", async (e) => {
@@ -101,19 +97,19 @@ if (createForm) {
       });
 
       const data = await response.text();
-      alert(data);
+      showMessage(data);
       createForm.reset();
       loadCourses();
     } catch (err) {
-      alert("Failed to create course.");
+      showMessage("Failed to create course.");
       console.error(err);
     }
   });
 }
 
-// ==========================
-// ASSIGN COURSE TO LECTURER
-// ==========================
+
+
+
 const assignForm = document.getElementById("assign-course-form");
 if (assignForm) {
   assignForm.addEventListener("submit", async (e) => {
@@ -132,19 +128,19 @@ if (assignForm) {
       );
 
       const data = await response.text();
-      alert(data);
+      showMessage(data);
       assignForm.reset();
-      loadCourses(); // ✅ Refresh course list after assigning
+      loadCourses(); 
     } catch (err) {
-      alert("Failed to assign course.");
+      showMessage("Failed to assign course.");
       console.error(err);
     }
   });
 }
 
-// ==========================
-// DELETE COURSE
-// ==========================
+
+
+
 const deleteCourseForm = document.getElementById("delete-course-form");
 if (deleteCourseForm) {
   deleteCourseForm.addEventListener("submit", async (e) => {
@@ -162,19 +158,19 @@ if (deleteCourseForm) {
       );
 
       const data = await response.text();
-      alert(data);
+      showMessage(data);
       deleteCourseForm.reset();
       loadCourses();
     } catch (err) {
-      alert("Failed to delete course.");
+      showMessage("Failed to delete course.");
       console.error(err);
     }
   });
 }
 
-// ==========================
-// DELETE LECTURER
-// ==========================
+
+
+
 const deleteLecturerForm = document.getElementById("delete-lecturer-form");
 if (deleteLecturerForm) {
   deleteLecturerForm.addEventListener("submit", async (e) => {
@@ -192,31 +188,28 @@ if (deleteLecturerForm) {
       );
 
       const data = await response.text();
-      alert(data);
+      showMessage(data);
       deleteLecturerForm.reset();
       loadLecturers();
     } catch (err) {
-      alert("Failed to delete lecturer.");
+      showMessage("Failed to delete lecturer.");
       console.error(err);
     }
   });
 }
 
-// ==========================
-// LOGOUT
-// ==========================
+
 const logoutBtn = document.getElementById("logout-btn");
 if (logoutBtn) {
   logoutBtn.addEventListener("click", () => {
     localStorage.clear();
-    alert("Logged out successfully.");
+    showMessage("Logged out successfully.");
     window.location.href = "../login.html";
   });
 }
 
-// ==========================
-// CREATE USER (ADMIN/LECTURER)
-// ==========================
+
+
 const createUserForm = document.getElementById("create-user-form");
 if (createUserForm) {
   createUserForm.addEventListener("submit", async (e) => {
@@ -235,14 +228,28 @@ if (createUserForm) {
       });
 
       const data = await response.text();
-      alert(data);
+      showMessage(data);
 
       createUserForm.reset();
-      loadLecturers(); // refresh lecturer list
-      loadCourses();   // refresh courses in case they get assigned
+      loadLecturers(); 
+      loadCourses();  
     } catch (err) {
-      alert("Failed to create user.");
+      showMessage("Failed to create user.");
       console.error(err);
     }
   });
 }
+
+
+function showMessage(message, type = "success") {
+  const notification = document.getElementById("notification");
+  if (!notification) return;
+
+  notification.textContent = message;
+  notification.className = `notification ${type}`;
+  
+  setTimeout(() => {
+    notification.classList.add("hidden");
+  }, 4000); 
+}
+

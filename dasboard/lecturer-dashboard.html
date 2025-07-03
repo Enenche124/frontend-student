@@ -5,32 +5,37 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Lecturer Dashboard</title>
   <link rel="stylesheet" href="../styles/lecturer-dashboard.css" />
+  <link rel="stylesheet" href="../styles/notify.css">
 </head>
 <body>
   <header class="dashboard-header">
         <h2 id="welcome-name"></h2>
 
     <div class="lecturer-info">
-      <span id="lecturer-email">lecturer@example.com</span>
+    
       <span class="badge">LECTURER</span>
       <button id="logout-btn">Logout</button>
     </div>
   </header>
 
   <main class="dashboard-content">
-    <!-- Assigned Courses -->
+   
+    
+
     <section class="dashboard-section">
       <h2>Your Assigned Courses</h2>
       <ul id="lecturerCoursesList" class="item-list"></ul>
     </section>
 
-    <!-- Enrolled Students -->
+   
+    
+
     <section class="dashboard-section">
       <h2>Students in Your Courses</h2>
       <ul id="studentsList" class="item-list"></ul>
     </section>
 
-    <!-- Assign Grade -->
+
     <section class="dashboard-section">
       <h2>Assign Grade</h2>
       <form id="assign-grade-form" class="form-grid">
@@ -40,6 +45,8 @@
         <button type="submit">Assign Grade</button>
       </form>
     </section>
+
+     <div id="notification" class="notification hidden"></div>
   </main>
 
   <script src="../scripts/lecturer-dashboard.js"></script>

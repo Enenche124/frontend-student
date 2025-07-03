@@ -1,6 +1,4 @@
-/* student-dashboard.css */
 
-/* GLOBAL RESET */
 * {
   margin: 0;
   padding: 0;
@@ -14,7 +12,7 @@ body {
   padding: 20px;
 }
 
-/* HEADER */
+
 header {
   background-color: #004aad;
   color: #fff;
@@ -49,14 +47,14 @@ button#logout-btn:hover {
   background-color: #e60000;
 }
 
-/* MAIN LAYOUT */
+
 main {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 20px;
 }
 
-/* SECTIONS */
+
 section {
   background: white;
   padding: 15px;
@@ -70,7 +68,7 @@ section h2 {
   color: #004aad;
 }
 
-/* FORMS */
+
 form {
   display: flex;
   flex-direction: column;
@@ -96,7 +94,6 @@ button:hover {
   background-color: #00318d;
 }
 
-/* LIST STYLING */
 ul {
   list-style: none;
   padding-left: 0;
@@ -110,7 +107,6 @@ ul li {
   font-size: 0.95rem;
 }
 
-/* MEDIA QUERIES */
 @media screen and (max-width: 600px) {
   header {
     flex-direction: column;
@@ -121,4 +117,42 @@ ul li {
   main {
     grid-template-columns: 1fr;
   }
+
+
+.notification{
+    left: 20%;
+    transform: translateX(-20%);
+    padding: 0.2rem 0.3rem;
+    font-weight: 200;
+    font-size: 0.8rem;
+  }
+}
+
+
+.notification {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 8px;
+  font-weight: 300;
+  z-index: 1000;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: opacity 0.4s ease;
+}
+
+.notification.success {
+  background-color: #d1f7d1;
+  color: #1a7f1a;
+  border: 1px solid #1a7f1a;
+}
+
+.notification.error {
+  background-color: #ffe0e0;
+  color: #b30000;
+  border: 1px solid #b30000;
+}
+
+.notification.hidden {
+  opacity: 0;
+  pointer-events: none;
 }

@@ -109,7 +109,6 @@ ul li {
   border-bottom: 1px solid #e5e7eb;
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
   header {
     flex-direction: column;
@@ -124,4 +123,42 @@ ul li {
   form {
     grid-template-columns: 1fr;
   }
+
+  .notification{
+    left: 20%;
+    transform: translateX(-20%);
+    padding: 0.2rem 0.3rem;
+    font-weight: 200;
+    font-size: 0.8rem;
+  }
+}
+
+
+.notification {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 0.2rem 0.4rem;
+  border-radius: 8px;
+  font-weight: 300;
+  z-index: 1000;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  transition: opacity 0.4s ease;
+}
+
+.notification.success {
+  background-color: #d1f7d1;
+  color: #1a7f1a;
+  border: 1px solid #1a7f1a;
+}
+
+.notification.error {
+  background-color: #ffe0e0;
+  color: #b30000;
+  border: 1px solid #b30000;
+}
+
+.notification.hidden {
+  opacity: 0;
+  pointer-events: none;
 }

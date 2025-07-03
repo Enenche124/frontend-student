@@ -1,4 +1,3 @@
-// student-dashboard.js
 
 const token = localStorage.getItem("token");
 const role = localStorage.getItem("role");
@@ -12,13 +11,12 @@ const headers = {
   Authorization: `Bearer ${token}`,
 };
 
-// Access control
+
 if (role !== "STUDENT") {
-  alert("Access denied. Redirecting...");
+  showMessage("Access denied. Redirecting...");
   window.location.href = "../login.html";
 }
 
-// Show student email
 document.getElementById("student-email").textContent = email || "Student";
 
 
@@ -27,9 +25,7 @@ if (nameDisplay && userName) {
 }
 
 
-// ==========================
-// Load Available Courses
-// ==========================
+
 async function loadAvailableCourses() {
   try {
     const response = await fetch("http://localhost:9090/api/v1/student/available-courses", {
@@ -50,9 +46,9 @@ async function loadAvailableCourses() {
   }
 }
 
-// ==========================
-// Load Enrolled Courses
-// ==========================
+
+
+
 async function loadEnrolledCourses() {
   try {
     const response = await fetch("http://localhost:9090/api/v1/student/enrolled-courses", {
@@ -73,9 +69,9 @@ async function loadEnrolledCourses() {
   }
 }
 
-// ==========================
-// Load Grades
-// ==========================
+
+
+
 async function loadGrades() {
   try {
     const response = await fetch("http://localhost:9090/api/v1/student/performance", {
@@ -96,9 +92,10 @@ async function loadGrades() {
   }
 }
 
-// ==========================
-// Enroll in a Course
-// ==========================
+
+
+
+
 const enrollForm = document.getElementById("enroll-form");
 if (enrollForm) {
   enrollForm.addEventListener("submit", async (e) => {
@@ -113,30 +110,43 @@ if (enrollForm) {
       });
 
       const result = await response.text();
-      alert(result);
+      showMessage(result);
       enrollForm.reset();
       loadAvailableCourses();
       loadEnrolledCourses();
     } catch (err) {
-      alert("Enrollment failed.");
+      showMessage("Enrollment failed.");
       console.error(err);
     }
   });
 }
 
-// ==========================
-// Logout
-// ==========================
+
+
 const logoutBtn = document.getElementById("logout-btn");
 if (logoutBtn) {
   logoutBtn.addEventListener("click", () => {
     localStorage.clear();
-    alert("Logged out.");
+    showMessage("Logged out.");
     window.location.href = "../login.html";
   });
 }
 
-// Initial Loads
+
 loadAvailableCourses();
 loadEnrolledCourses();
 loadGrades();
+
+
+
+function showMessage(message, type = "success") {
+  const notification = document.getElementById("notification");
+  if (!notification) return;
+
+  notification.textContent = message;
+  notification.className = `notification ${type}`;
+  
+  setTimeout(() => {
+    notification.classList.add("hidden");
+  }, 4000); 
+}
