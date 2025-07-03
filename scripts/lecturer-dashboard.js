@@ -24,7 +24,7 @@ if(nameDisplay && userName) {
 
 async function loadLecturerCourses() {
   try {
-    const response = await fetch("http://localhost:9090/api/v1/lecturer/courses", { headers });
+    const response = await fetch("https://student-course-management-repo-1.onrender.com/api/v1/lecturer/courses", { headers });
 
     if (!response.ok) {
       const errorMsg = await response.text();
@@ -50,7 +50,7 @@ loadLecturerCourses();
 
 async function loadEnrolledStudents() {
   try {
-    const response = await fetch("http://localhost:9090/api/v1/lecturer/students", { headers });
+    const response = await fetch("https://student-course-management-repo-1.onrender.com/api/v1/lecturer/students", { headers });
 
     if (!response.ok) {
       const errorMsg = await response.text();
@@ -87,7 +87,7 @@ if (assignGradeForm) {
     const score = parseInt(document.getElementById("score").value.trim());
 
     try {
-      const response = await fetch("http://localhost:9090/api/v1/lecturer/assign-grade", {
+      const response = await fetch("https://student-course-management-repo-1.onrender.com/api/v1/lecturer/assign-grade", {
         method: "POST",
         headers,
         body: JSON.stringify({ studentEmail, courseCode, score }),

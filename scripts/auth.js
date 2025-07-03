@@ -1,4 +1,4 @@
-const apiBaseUrl = "http://localhost:9090/api/v1/auth"; 
+const apiBaseUrl = "https://student-course-management-repo-1.onrender.com/api/v1/auth"; 
 
 
 const registerForm = document.getElementById("registerForm");

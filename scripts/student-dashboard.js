@@ -28,7 +28,7 @@ if (nameDisplay && userName) {
 
 async function loadAvailableCourses() {
   try {
-    const response = await fetch("http://localhost:9090/api/v1/student/available-courses", {
+    const response = await fetch("https://student-course-management-repo-1.onrender.com/api/v1/student/available-courses", {
       headers,
     });
     const courses = await response.json();
@@ -51,7 +51,7 @@ async function loadAvailableCourses() {
 
 async function loadEnrolledCourses() {
   try {
-    const response = await fetch("http://localhost:9090/api/v1/student/enrolled-courses", {
+    const response = await fetch("https://student-course-management-repo-1.onrender.com/api/v1/student/enrolled-courses", {
       headers,
     });
     const courses = await response.json();
@@ -74,7 +74,7 @@ async function loadEnrolledCourses() {
 
 async function loadGrades() {
   try {
-    const response = await fetch("http://localhost:9090/api/v1/student/performance", {
+    const response = await fetch("https://student-course-management-repo-1.onrender.com/api/v1/student/performance", {
       headers,
     });
     const grades = await response.json();
@@ -104,7 +104,7 @@ if (enrollForm) {
     const courseCode = document.getElementById("enrollCourseCode").value.trim();
 
     try {
-      const response = await fetch(`http://localhost:9090/api/v1/student/enroll?courseCode=${courseCode}`, {
+      const response = await fetch(`https://student-course-management-repo-1.onrender.com/api/v1/student/enroll?courseCode=${courseCode}`, {
         method: "POST",
         headers,
       });

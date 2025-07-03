@@ -21,7 +21,7 @@ if (nameDisplay && userName) {
 
 async function loadCourses() {
   try {
-    const response = await fetch("http://localhost:9090/api/admin/courses", {
+    const response = await fetch("https://student-course-management-repo-1.onrender.com/api/admin/courses", {
       headers,
     });
 
@@ -55,7 +55,7 @@ async function loadLecturers() {
   lecturersList.innerHTML = ""; 
 
   try {
-    const response = await fetch("http://localhost:9090/api/admin/lecturers", {
+    const response = await fetch("https://student-course-management-repo-1.onrender.com/api/admin/lecturers", {
       headers,
     });
 
@@ -90,7 +90,7 @@ if (createForm) {
     const description = document.getElementById("description").value;
 
     try {
-      const response = await fetch("http://localhost:9090/api/admin/courses", {
+      const response = await fetch("https://student-course-management-repo-1.onrender.com/api/admin/courses", {
         method: "POST",
         headers,
         body: JSON.stringify({ courseCode, title, description }),
@@ -120,7 +120,7 @@ if (assignForm) {
 
     try {
       const response = await fetch(
-        `http://localhost:9090/api/admin/courses/${courseCode}/assign?lecturerEmail=${lecturerEmail}`,
+        `https://student-course-management-repo-1.onrender.com/api/admin/courses/${courseCode}/assign?lecturerEmail=${lecturerEmail}`,
         {
           method: "PUT",
           headers,
@@ -150,7 +150,7 @@ if (deleteCourseForm) {
 
     try {
       const response = await fetch(
-        `http://localhost:9090/api/admin/delete-course?courseCode=${courseCode}`,
+        `https://student-course-management-repo-1.onrender.com/api/admin/delete-course?courseCode=${courseCode}`,
         {
           method: "DELETE",
           headers,
@@ -180,7 +180,7 @@ if (deleteLecturerForm) {
 
     try {
       const response = await fetch(
-        `http://localhost:9090/api/admin/delete-lecturer?email=${email}`,
+        `https://student-course-management-repo-1.onrender.com/api/admin/delete-lecturer?email=${email}`,
         {
           method: "DELETE",
           headers,
@@ -221,7 +221,7 @@ if (createUserForm) {
     const role = document.getElementById("newUserRole").value;
 
     try {
-      const response = await fetch("http://localhost:9090/api/admin/create-user", {
+      const response = await fetch("https://student-course-management-repo-1.onrender.com/api/admin/create-user", {
         method: "POST",
         headers,
         body: JSON.stringify({ name, email, password, role }),
