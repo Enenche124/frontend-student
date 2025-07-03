@@ -2,22 +2,27 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Welcome to Learning App</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Welcome | Student Course Management</title>
   <link rel="stylesheet" href="/main.css" />
-  <link rel="stylesheet" href="/landingPage.css">
-  
- 
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
+  <div class="container">
+    <!-- Logo Section -->
+    <div class="logo-container">
+      <img src="./assets/images/logo.png" alt="App Logo" class="logo" />
+    </div>
 
-  <h1>Welcome to the Student Course Management System</h1>
+    <header>
+      <h1>Student Course Management System</h1>
+      <p>Empowering students, lecturers, and admins to manage learning easily.</p>
+    </header>
 
-  <div class="button-group">
-    <a href="./register.html" class="btn">Register (Students Only)</a>
-    <a href="./login.html" class="btn">Login</a>
+    <main class="actions">
+      <a href="./register.html" class="btn primary">Register </a>
+      <a href="./login.html" class="btn secondary">Login</a>
+    </main>
   </div>
-
-  <p class="note">Admin and lecturers must be added by the admin before logging in.</p>
-
 </body>
 </html>
