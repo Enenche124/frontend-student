@@ -52,6 +52,8 @@ if (loginForm) {
         // Store token and role
         localStorage.setItem("token", data.token);
         localStorage.setItem("role", data.role);
+        localStorage.setItem("userEmail", email);
+        localStorage.setItem("userName", data.name);
         alert("Login successful!");
 
         window.location.href = "dashboard-redirect.html";

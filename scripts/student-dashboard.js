@@ -3,6 +3,9 @@
 const token = localStorage.getItem("token");
 const role = localStorage.getItem("role");
 const email = localStorage.getItem("email");
+const userName = localStorage.getItem("userName");
+const nameDisplay = document.getElementById("welcome-name");
+
 
 const headers = {
   "Content-Type": "application/json",
@@ -17,6 +20,12 @@ if (role !== "STUDENT") {
 
 // Show student email
 document.getElementById("student-email").textContent = email || "Student";
+
+
+if (nameDisplay && userName) {
+  nameDisplay.textContent = `Welcome, ${userName}`;
+}
+
 
 // ==========================
 // Load Available Courses
