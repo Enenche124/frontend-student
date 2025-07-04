@@ -97,11 +97,13 @@ body {
 }
 
 /* Mobile tweaks */
-@media (max-width: 600px) {
+@media (max-width: 768px) {
   .auth-container {
     padding: 1.2rem;
-    width: 90%; /* Ensure full width on small screens */
+    width: 100%; /* Ensure full width on small screens */
     border-radius: 10px;
+    margin: 0 auto;
+    height: auto; /* Allow height to adjust based on content */
   }
 
   .auth-container input,
