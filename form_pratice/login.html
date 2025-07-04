@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" href="login.css">
+</head>
+<body>
+  <div class="login-container">
+    <div class="login-form">
+      <div class="logo">OC</div>
+      <h2>Welcome Back!</h2>
+      <p>Login to your account</p>
+      <input type="text" id="username" placeholder="Username" required>
+      <input type="password" id="password" placeholder="Password" required>
+      <a href="#" class="forgot-password">Forgot Password?</a>
+      <button onclick="login()">Login</button>
+      <div class="or-divider">or</div>
+      <button class="google-login">Login with Google</button>
+      <p id="error-message" class="hidden"></p>
+    </div>
+    <img src="images/login_img.png" alt="Login Background" class="background-image">
+  </div>
+  <script src="scripts/auth.js"></script>
+</body>
+</html>
